@@ -1,3 +1,4 @@
+require 'rubygems'
 require 'opengl'
 
 def handleKeypress(key, x, y)
