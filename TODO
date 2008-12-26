@@ -1,0 +1,12 @@
+== TODO:
+
+Current Goals
+* Finish the terrain lesson in Part2
+* Get a pure Ruby implementation of the BMP loader (to get rid of the sdl dependancy)
+** Be sure the BMP loader properly flips the images and their color values, as BMP files are stored upside down
+
+Future Goals
+* Finish all of Part2
+
+Far Future Goals
+* Finish the whole tutorial series
