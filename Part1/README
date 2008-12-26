@@ -1,0 +1,18 @@
+The lessons and the files corresponding to them
+Lesson 1: basicshapes.rb
+Lesson 2: transformations.rb
+Lesson 3: color.rb
+Lesson 4: lighting.rb
+Lesson 5: textures.rb *
+Lesson 6: alltogether.rb **
+
+* The textures.rb file contains an almost identical implementation as the
+tutorial, but because of the way SDL loads Bitmaps the colors are wrong,
+textures2.rb trys to fix this in a roundabout way, but the end effect looks
+slightly different than it should
+
+** The file appears to be correct, but it is not. The pixels array is
+reversed, making the end result look almost perfect, except the picture
+is reversed thusly videotutorialsrock on the image becomes kcorslairotutoediv
+
+The problems should be fixed soon, but for now they are good enough
