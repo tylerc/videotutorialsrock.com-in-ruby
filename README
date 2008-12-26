@@ -26,7 +26,7 @@ gem install rubysdl -y
 gem install ruby-opengl -y
 (note these gems may require outside dependanies, you can find out which ones from their respective websites)
 
-I am currently looking for help in any area. 
+I am currently looking for help in any area. (See the TODO file for stuff that needs to be done)
 
 This is an unofficial port of the code, I have no affiliation with Bill Jacobs of videotutorialsrock.com
 The origanal code was written in C++ by Bill Jacobs of videotutorialsrock.com
