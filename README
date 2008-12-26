@@ -7,6 +7,6 @@ gem install rubysdl -y
 gem install ruby-opengl -y
 (note these gems may require outside dependanies, you can find out which ones from their respective websites)
 
-I am currently looking for help with any of the tutorials. 
+I am currently looking for help in any area. 
 
 This is an unofficial port of the code, I have no affiliation with Bill Jacobs of videotutorialsrock.com
