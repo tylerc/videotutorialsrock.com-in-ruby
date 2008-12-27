@@ -47,4 +47,9 @@ class Vec3f
 		return ((@v[0] * other[0]) + (@v[1] * other[1]) + (@v[2] * other[2]))
 	end
 	
+	def cross(other)
+		return Vec3f.new((@v[1] * other[2]) - (@v[2] * other[1]),
+		(@v[2] * other[0]) - (@v[0] * other[2]),
+		(@v[0] * other[1]) - (@v[1] * other[0]))
+	end
 end
