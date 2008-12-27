@@ -42,4 +42,8 @@ class Vec3f
 		m = magnitude
 		return Vec3f.new(@v[0] / m, @v[1] / m, @v[2] / m)
 	end
+	
+	def dot(other)
+		return ((@v[0] * other[0]) + (@v[1] * other[1]) + (@v[2] * other[2]))
+	end
 end

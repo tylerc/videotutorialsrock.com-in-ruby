@@ -111,6 +111,7 @@ describe Vec3f do
 			dotted = vec.dot(vec2)
 			dotted.should eql((1*1) + (2*2) + (3*3))
 		end
+		
 		it "should be able to cross itself"
 		it "should be able to put its information in text format"
 		
