@@ -46,4 +46,5 @@ class Vec3f
 	def dot(other)
 		return ((@v[0] * other[0]) + (@v[1] * other[1]) + (@v[2] * other[2]))
 	end
+	
 end
