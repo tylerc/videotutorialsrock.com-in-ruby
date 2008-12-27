@@ -120,6 +120,8 @@ describe Vec3f do
 			vec3[1].should eql(6)
 			vec3[2].should eql(-3)
 		end
-		it "should be able to put its information in text format"
-		
+		it "should be able to put its information in text format" do
+			vec = Vec3f.new(1,2,3)
+			vec.to_s.should eql("(1,2,3)")
+		end
 end

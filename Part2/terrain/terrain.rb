@@ -52,4 +52,8 @@ class Vec3f
 		(@v[2] * other[0]) - (@v[0] * other[2]),
 		(@v[0] * other[1]) - (@v[1] * other[0]))
 	end
+	
+	def to_s
+		return '(' + @v[0].to_s + ',' + @v[1].to_s + ',' + @v[2].to_s + ')'
+	end
 end
