@@ -94,7 +94,16 @@ describe Vec3f do
 			vec.magnitudeSquared.should eql((1**1) + (2 ** 2) + (3 ** 2))
 		end
 		
-		it "should be able to normalize itself"
+		it "should be able to normalize itself" do # This test is probably bad coding/testing practice, but I don't want to do the math myself 
+			vec = Vec3f.new(1,2,3)
+			m = vec.magnitude
+			vec2 = Vec3f.new(vec[0] / m, vec[1] / m, vec[2] / m)
+			
+			vec3 = vec.normalize
+			vec3[0].should eql(vec2[0])
+			vec3[1].should eql(vec2[1])
+			vec3[2].should eql(vec2[2])
+		end
 		it "should be able to dot itself"
 		it "should be able to cross itself"
 		it "should be able to put its information in text format"

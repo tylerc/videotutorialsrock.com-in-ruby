@@ -37,4 +37,9 @@ class Vec3f
 	def magnitudeSquared
 		return ((@v[0] ** 2) + (@v[1] ** 2) + (@v[2] ** 2))
 	end
+	
+	def normalize
+		m = magnitude
+		return Vec3f.new(@v[0] / m, @v[1] / m, @v[2] / m)
+	end
 end
