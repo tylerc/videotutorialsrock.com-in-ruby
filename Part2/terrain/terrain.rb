@@ -21,4 +21,8 @@ class Vec3f
 	def +(other)
 		return Vec3f.new(@v[0] + other[0], @v[1] + other[1], @v[2] + other[2])
 	end
+	
+	def -(other)
+		return Vec3f.new(@v[0] - other[0], @v[1] - other[1], @v[2] - other[2])
+	end
 end
