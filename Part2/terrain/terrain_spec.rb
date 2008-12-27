@@ -1,0 +1,40 @@
+require 'terrain'
+
+describe Vec3f do
+		it "should return the indecies" do
+			vec = Vec3f.new(1, 2, 3)
+			vec[0].should eql(1)
+			vec[1].should eql(2)
+			vec[2].should eql(3)
+		end
+		
+		it "should be able to be multiplied by a scale" do
+			vec = Vec3f.new(1,2,3)
+			vec2 = vec * 2
+			vec2[0].should eql(2)
+			vec2[1].should eql(4)
+			vec2[2].should eql(6)
+		end
+		
+		it "should be able to be divided by a scale" do
+			vec = Vec3f.new(1,2,3)
+			vec2 = vec / 2.0
+			vec2[0].should eql(0.5)
+			vec2[1].should eql(1.0)
+			vec2[2].should eql(1.5)
+		end
+		it "should be able to have another Vec3f object added to it"
+		it "should be able to have another Vec3f object subtracted from it"
+		it "should be able to return a Vec3f object that is negative itself"
+		it "should be able to use the *= operator"
+		it "should be able to use the /= operator"
+		it "should be able to use the += operator"
+		it "should be able to use the -= operator"
+		it "should be able to return its magnitude"
+		it "should be able to return its magnitude squared"
+		it "should be able to normalize itself"
+		it "should be able to dot itself"
+		it "should be able to cross itself"
+		it "should be able to put its information in text format"
+		
+end
