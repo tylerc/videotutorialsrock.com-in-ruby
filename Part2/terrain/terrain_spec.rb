@@ -40,8 +40,15 @@ describe Vec3f do
 			vec3[0].should eql(3)
 			vec3[1].should eql(8)
 			vec3[2].should eql(30)
+		
 		end
-		it "should be able to return a Vec3f object that is negative itself"
+		it "should be able to return a Vec3f object that is negative itself" do
+			vec = Vec3f.new(1,2,3)
+			vec2 = -vec
+			vec2[0].should eql(-1)
+			vec2[1].should eql(-2)
+			vec2[2].should eql(-3)
+		end
 		it "should be able to use the *= operator"
 		it "should be able to use the /= operator"
 		it "should be able to use the += operator"
