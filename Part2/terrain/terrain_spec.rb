@@ -104,7 +104,13 @@ describe Vec3f do
 			vec3[1].should eql(vec2[1])
 			vec3[2].should eql(vec2[2])
 		end
-		it "should be able to dot itself"
+		
+		it "should be able to dot itself" do
+			vec = Vec3f.new(1,2,3)
+			vec2 = Vec3f.new(1,2,3)
+			dotted = vec.dot(vec2)
+			dotted.should eql((1*1) + (2*2) + (3*3))
+		end
 		it "should be able to cross itself"
 		it "should be able to put its information in text format"
 		
