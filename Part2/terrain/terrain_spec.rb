@@ -84,7 +84,11 @@ describe Vec3f do
 			vec[2].should eql(3)
 		end
 		
-		it "should be able to return its magnitude"
+		it "should be able to return its magnitude" do
+			vec = Vec3f.new(1,2,3)
+			vec.magnitude.should eql(Math.sqrt(1+4+9))
+		end
+		
 		it "should be able to return its magnitude squared"
 		it "should be able to normalize itself"
 		it "should be able to dot itself"

@@ -29,4 +29,8 @@ class Vec3f
 	def -@
 		return Vec3f.new(-@v[0], -@v[1], -@v[2])
 	end
+	
+	def magnitude
+		return Math.sqrt((@v[0] ** 2) + (@v[1] ** 2) + (@v[2] ** 2))
+	end
 end
