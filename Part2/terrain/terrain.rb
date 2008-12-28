@@ -8,12 +8,12 @@ class Terrain
 		@l = l
 		
 		@hs = []
-		l.times do |i|
+		@l.times do |i|
 			@hs[i] = [@w]
 		end
 		
 		@normals = []
-		l.times do |i|
+		@l.times do |i|
 			@normals[i] = [@w]
 		end
 	end
@@ -65,7 +65,7 @@ class Terrain
 				end
 				
 				if x < (@w - 1)
-					@right = Vec3f.new(1.0, hs[z][x + 1] - hs[z][x], 0.0)
+					@right = Vec3f.new(1.0, @hs[z][x + 1] - @hs[z][x], 0.0)
 				end
 				
 				if x > 0 and z > 0
@@ -113,6 +113,14 @@ class Terrain
 		
 		@normals2 = nil
 		computedNormals = true
+	end
+	
+	# returns the normal at (x, z)
+	def getNormal(x, z)
+		if (!@computedNormals)
+			computeNormals
+		end
+		return @normals[z][x]
 	end
 end
 

@@ -191,10 +191,28 @@ a {
     <dd class="spec passed"><span class="passed_spec_name">should keep the height it has at a position</span></dd>
     <script type="text/javascript">moveProgressBar('26.0');</script>
     <dd class="spec passed"><span class="passed_spec_name">should be able to compute it's normals</span></dd>
-    <script type="text/javascript">makeYellow('rspec-header');</script>
-    <script type="text/javascript">makeYellow('example_group_1');</script>
+    <script type="text/javascript">makeRed('rspec-header');</script>
+    <script type="text/javascript">makeRed('example_group_1');</script>
     <script type="text/javascript">moveProgressBar('30.4');</script>
-    <dd class="spec not_implemented"><span class="not_implemented_spec_name">should be able to return the normal at a postition (PENDING: Not Yet Implemented)</span></dd>
+    <dd class="spec failed">
+      <span class="failed_spec_name">should be able to return the normal at a postition</span>
+      <div class="failure" id="failure_1">
+        <div class="message"><pre>undefined method `-' for nil:NilClass</pre></div>
+        <div class="backtrace"><pre>./terrain.rb:68:in `computeNormals'
+./terrain.rb:52:in `times'
+./terrain.rb:52:in `computeNormals'
+./terrain.rb:51:in `times'
+./terrain.rb:51:in `computeNormals'
+./terrain.rb:121:in `getNormal'
+./terrain_spec.rb:37:</pre></div>
+    <pre class="ruby"><code><span class="linenum">66</span>				
+<span class="linenum">67</span>				if x < (@w - 1)
+<span class="offending"><span class="linenum">68</span>					@right = Vec3f.new(1.0, @hs[z][x + 1] - @hs[z][x], 0.0)</span>
+<span class="linenum">69</span>				end
+<span class="linenum">70</span>				
+<span class="linenum">71</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
+      </div>
+    </dd>
   </dl>
 </div>
 <div class="example_group">
@@ -234,8 +252,8 @@ a {
     <dd class="spec passed"><span class="passed_spec_name">should be able to put its information in text format</span></dd>
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>0.109 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "23 examples, 0 failures, 1 pending";</script>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>0.234 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "23 examples, 1 failure";</script>
 </div>
 </div>
 </body>
