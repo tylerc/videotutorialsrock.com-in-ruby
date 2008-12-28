@@ -20,7 +20,13 @@ describe Terrain do
 		ter = Terrain.new(1,2)
 		ter.getHeight(1,1).should eql(nil) # maybe it should be zero not nil...
 	end
-	it "should keep the height it has at a position"
+	
+	it "should keep the height it has at a position" do
+		ter = Terrain.new(1,2)
+		ter.setHeight(1,1,5)
+		ter.getHeight(1,1).should eql(5)
+	end
+	
 	it "should be able to compute it's normals"
 	it "should be able to return the normal at a postition"
 end
