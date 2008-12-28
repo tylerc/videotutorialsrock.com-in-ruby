@@ -33,7 +33,7 @@ class Terrain
 	
 	# Returns the height at (x, z)
 	def getHeight(x, z)
-		return hs[z][x]
+		return @hs[z][x]
 	end
 end
 
