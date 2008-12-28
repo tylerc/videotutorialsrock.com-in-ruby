@@ -1,8 +1,16 @@
 require 'terrain'
 
 describe Terrain do
-	it "should be able to return its width"
-	it "should be able to return its length"
+	it "should be able to return its width" do
+		ter = Terrain.new(1,2)
+		ter.width.should eql(1)
+	end
+	
+	it "should be able to return its length" do
+		ter = Terrain.new(1,2)
+		ter.length.should eql(2)
+	end
+	
 	it "should be able to set its height at a position"
 	it "should be able to return its height at a position"
 	it "should keep the height it has at a postion"
