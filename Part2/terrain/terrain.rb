@@ -1,3 +1,42 @@
+require 'rubygems'
+require 'opengl'
+
+class Terrain
+	def initialize(w, l)
+		@w = w
+		@l = l
+		
+		@hs = []
+		l.times do |i|
+			@hs[i] = [@w]
+		end
+		
+		@normals = []
+		l.times do |i|
+			@normals[i] = [@w]
+		end
+	end
+	
+	def width
+		return @w
+	end
+	
+	def length
+		return @l
+	end
+	
+	# Sets the height at (x, z) to y
+	def setHeight(x, z, y)
+		@hs[z][x] = y
+		@computedNormals = false
+	end
+	
+	# Returns the height at (x, z)
+	def getHeight(x, z)
+		return hs[z][x]
+	end
+end
+
 class Vec3f
 	def initialize(x, y, z)
 		@v = []

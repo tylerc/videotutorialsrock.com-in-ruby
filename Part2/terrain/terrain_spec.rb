@@ -1,5 +1,15 @@
 require 'terrain'
 
+describe Terrain do
+	it "should be able to return its width"
+	it "should be able to return its length"
+	it "should be able to set its height at a position"
+	it "should be able to return its height at a position"
+	it "should keep the height it has at a postion"
+	it "should be able to compute it's normals"
+	it "should be able to return the normal at a postition"
+end
+
 describe Vec3f do
 		it "should return the indecies" do
 			vec = Vec3f.new(1, 2, 3)
