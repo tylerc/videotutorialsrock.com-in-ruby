@@ -11,7 +11,7 @@ describe Terrain do
 		ter.length.should eql(2)
 	end
 	
-	it "should be able to set its height at a position" do # test done to check that there are no errors in the function
+	it "should be able to set its height at a position" do # test done to check that there are no bugs in the function
 		ter = Terrain.new(1,2)
 		ter.setHeight(1,1,5)
 	end
@@ -27,7 +27,10 @@ describe Terrain do
 		ter.getHeight(1,1).should eql(5)
 	end
 	
-	it "should be able to compute it's normals"
+	it "should be able to compute it's normals" do # test done to check that there are no bugs in the function
+		ter = Terrain.new(1,2)
+		ter.computeNormals
+	end
 	it "should be able to return the normal at a postition"
 end
 

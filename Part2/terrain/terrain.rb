@@ -2,6 +2,7 @@ require 'rubygems'
 require 'opengl'
 
 class Terrain
+	FALLOUT_RATIO = 0.5
 	def initialize(w, l)
 		@w = w
 		@l = l
@@ -34,6 +35,84 @@ class Terrain
 	# Returns the height at (x, z)
 	def getHeight(x, z)
 		return @hs[z][x]
+	end
+	
+	# Computes the normals, if they haven't been computed yet
+	def computeNormals
+		if @computedNormals
+			return
+		end
+		
+		@normals2 = []
+		@l.times do |i|
+			@normals2[i] = [@w]
+		end
+		
+		@l.times do |z|
+			@w.times do |x|
+				@sum = Vec3f.new(0.0, 0.0, 0.0)
+				
+				if z > 0
+					@out = Vec3f.new(0.0, @hs[z - 1][x] - @hs[z][x], -1.0)
+				end
+				
+				if z < (@l - 1)
+					@in = Vec3f.new(0.0, @hs[z + 1][x] - @hs[z][x], 1.0)
+				end
+				
+				if x > 0
+					@left = Vec3f.new(-1.0, @hs[z][x - 1] - @hs[z][x], 0.0)
+				end
+				
+				if x < (@w - 1)
+					@right = Vec3f.new(1.0, hs[z][x + 1] - hs[z][x], 0.0)
+				end
+				
+				if x > 0 and z > 0
+					@sum += @out.cross(@left).normalize
+				end
+				if x > 0 and z < (@l - 1)
+					@sum += @left.cross(@in).normalize
+				end
+				if x < (@w - 1) and z < (@l - 1)
+					@sum += @in.cross(@right).normalize
+				end
+				if x < (@w - 1) and z > 0
+					@sum += @right.cross(@out).normalize
+				end
+				
+				@normals2[z][x] = @sum
+			end
+		end
+		
+		# smooth out the normals
+		#FALLOUT_RATIO = 0.5
+		@l.times do |z|
+			@w.times do |x|
+				sum = @normals2[z][x]
+				
+				if x > 0
+					sum += @normals2[z][x - 1] * FALLOUT_RATIO
+				end
+				if x < (@w - 1)
+					sum += @normals2[z][x + 1] * FALLOUT_RATIO
+				end
+				if z > 0
+					sum += @normals2[z - 1][x] * FALLOUT_RATIO
+				end
+				if z < (@l - 1)
+					sum += @normals2[z + 1][x] * FALLOUT_RATIO
+				end
+				
+				if (sum.magnitude == 0)
+					sum = Vec3f.new(0.0, 1.0, 0.0)
+				end
+				@normals[z][x] = sum
+			end
+		end
+		
+		@normals2 = nil
+		computedNormals = true
 	end
 end
 
