@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'opengl'
 require 'sdl'
+require 'vec3f'
 
 class Terrain
 	FALLOUT_RATIO = 0.5
