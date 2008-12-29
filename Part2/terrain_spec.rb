@@ -1,5 +1,5 @@
-require 'terrain'
-require 'vec3f'
+require "terrain"
+require "vec3f"
 
 describe Terrain do
 	it "should be able to return its width" do
