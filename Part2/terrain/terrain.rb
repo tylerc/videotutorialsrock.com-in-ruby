@@ -171,6 +171,48 @@ def handleResize(w, h)
 	gluPerspective(45,0, w / h, 1.0, 200.0)
 end
 
+def max(a, b)
+	return (b>a) ? a:b
+end
+
+def drawScene
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+	
+	glMatrixMode(GL_MODELVIEW)
+	glLoadIdentity
+	glTranslatef(0.0, 0.0, -10.0)
+	glRotatef(30.0, 1.0, 0.0, 0.0)
+	glRotatef(-@angle, 0.0, 1.0, 0.0)
+	
+	ambientColor = [0.4, 0.4, 0.4, 1.0]
+	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientColor)
+	
+	lightColor0 = [0.6, 0.6, 0.6, 1.0]
+	lightPos0 = [-0.5, 0.8, 0.1, 0.0]
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, lightColor0)
+	glLightfv(GL_LIGHT0, GL_POSITION, lightPos0)
+	
+	scale = 5.0 / max(@terrain.width - 1, @terrain.length- 1)
+	glScalef(scale, scale, scale)
+	glTranslatef(-(@terrain.width - 1) / 2, 0.0, -(@terrain.length - 1) / 2)
+	glColor3f(0.3, 0.9, 0.0)
+	(@terrain.length - 1).times do |z|
+		# Makes OpenGL draw a triangle at every three consecutive vertices
+		glBegin(GL_TRIANGLE_STRIP)
+		@terrain.width.times do |x|
+			normal = @terrain.getNormal(x,z)
+			glNormal3f(normal[0], normal[1], normal[2])
+			glVertex3f(x, @terrain.getHeight(x, z), z)
+			normal = @terrain.getNormal(x, z + 1)
+			glNormal3f(normal[0], normal[1], normal[2])
+			glVertex3f(x, @terrain.getHeight(x, z + 1), z + 1)
+		end
+		glEnd
+	end
+	
+	glutSwapBuffers
+end
+
 class Vec3f
 	def initialize(x, y, z)
 		@v = []
