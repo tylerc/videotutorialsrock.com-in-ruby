@@ -197,7 +197,7 @@ def loadTerrain(filename, height)
 	end
 	
 	image = nil
-	t.computNormals
+	t.computeNormals
 	return t
 end
 
@@ -218,7 +218,7 @@ end
 def initRendering
 	glEnable(GL_DEPTH_TEST)
 	glEnable(GL_COLOR_MATERIAL)
-	gl_Enable(GL_LIGHTIN)
+	glEnable(GL_LIGHTING)
 	glEnable(GL_LIGHT0)
 	glEnable(GL_NORMALIZE)
 	glShadeModel(GL_SMOOTH)
@@ -228,7 +228,7 @@ def handleResize(w, h)
 	glViewport(0, 0, w, h)
 	glMatrixMode(GL_PROJECTION)
 	glLoadIdentity
-	gluPerspective(45,0, w / h, 1.0, 200.0)
+	gluPerspective(45.0, w / h, 1.0, 200.0)
 end
 
 def max(a, b)
@@ -243,7 +243,6 @@ def drawScene
 	glTranslatef(0.0, 0.0, -10.0)
 	glRotatef(30.0, 1.0, 0.0, 0.0)
 	glRotatef(-@angle, 0.0, 1.0, 0.0)
-	
 	ambientColor = [0.4, 0.4, 0.4, 1.0]
 	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientColor)
 	
@@ -260,11 +259,11 @@ def drawScene
 		# Makes OpenGL draw a triangle at every three consecutive vertices
 		glBegin(GL_TRIANGLE_STRIP)
 		@terrain.width.times do |x|
-			normal = @terrain.getNormal(x,z)
-			glNormal3f(normal[0], normal[1], normal[2])
+			#normal = @terrain.getNormal(x,z)
+			#glNormal3f(normal[0], normal[1], normal[2])
 			glVertex3f(x, @terrain.getHeight(x, z), z)
-			normal = @terrain.getNormal(x, z + 1)
-			glNormal3f(normal[0], normal[1], normal[2])
+			#normal = @terrain.getNormal(x, z + 1)
+			#glNormal3f(normal[0], normal[1], normal[2])
 			glVertex3f(x, @terrain.getHeight(x, z + 1), z + 1)
 		end
 		glEnd
