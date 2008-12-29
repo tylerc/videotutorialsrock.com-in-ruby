@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'opengl'
+require 'sdl'
 
 class Terrain
 	FALLOUT_RATIO = 0.5
@@ -122,6 +123,52 @@ class Terrain
 		end
 		return @normals[z][x]
 	end
+end
+
+def loadTerrain(filename, height)
+	image = SDL::Surface.loadBMP(filename)
+	t = Terrain.new(image.w, image.h)
+	image.h.times do |y|
+		image.w.times do |x|
+			color = image.pixels[3 * (y * image.w + x)]
+			h = height * ((color / 255.0) - 0.5)
+			t.setHeight(x, y, h)
+		end
+	end
+	
+	image = nil
+	t.computNormals
+	return t
+end
+
+@angle = 60.0
+
+def cleanup
+	@terrain = nil
+end
+
+def handleKeypress(key, x, y)
+	case key
+		when 27:
+			cleanup
+			exit
+	end
+end
+
+def initRendering
+	glEnable(GL_DEPTH_TEST)
+	glEnable(GL_COLOR_MATERIAL)
+	gl_Enable(GL_LIGHTIN)
+	glEnable(GL_LIGHT0)
+	glEnable(GL_NORMALIZE)
+	glShadeModel(GL_SMOOTH)
+end
+
+def handleResize(w, h)
+	glViewport(0, 0, w, h)
+	glMatrixMode(GL_PROJECTION)
+	glLoadIdentity
+	gluPerspective(45,0, w / h, 1.0, 200.0)
 end
 
 class Vec3f
