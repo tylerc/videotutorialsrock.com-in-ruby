@@ -1,8 +1,7 @@
 == TODO:
 
 Current Goals
-* Finish the terrain lesson in Part2
-** Get the rest of the tutorial working
+* Finish the Drawing Text lesson in Part 2
 * Get a pure Ruby implementation of the BMP loader (to get rid of the sdl dependancy)
 ** Be sure the BMP loader properly flips the images and their color values, as BMP files are stored upside down
 * Add the comments back in. In some files they were removed during translation
