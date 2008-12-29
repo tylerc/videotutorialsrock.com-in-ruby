@@ -113,7 +113,7 @@ class Terrain
 		end
 		
 		@normals2 = nil
-		computedNormals = true
+		@computedNormals = true
 	end
 	
 	# returns the normal at (x, z)
@@ -259,11 +259,11 @@ def drawScene
 		# Makes OpenGL draw a triangle at every three consecutive vertices
 		glBegin(GL_TRIANGLE_STRIP)
 		@terrain.width.times do |x|
-			#normal = @terrain.getNormal(x,z)
-			#glNormal3f(normal[0], normal[1], normal[2])
+			normal = @terrain.getNormal(x,z)
+			glNormal3f(normal[0], normal[1], normal[2])
 			glVertex3f(x, @terrain.getHeight(x, z), z)
-			#normal = @terrain.getNormal(x, z + 1)
-			#glNormal3f(normal[0], normal[1], normal[2])
+			normal = @terrain.getNormal(x, z + 1)
+			glNormal3f(normal[0], normal[1], normal[2])
 			glVertex3f(x, @terrain.getHeight(x, z + 1), z + 1)
 		end
 		glEnd
