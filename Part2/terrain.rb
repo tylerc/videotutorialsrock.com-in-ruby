@@ -223,18 +223,20 @@ def update(value)
 	glutTimerFunc(25, method(:update).to_proc, 0)
 end
 
-glutInit
-glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH)
-glutInitWindowSize(400, 400)
+if __FILE__ == $0
+	glutInit
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH)
+	glutInitWindowSize(400, 400)
 
-glutCreateWindow("Terrain")
-initRendering
+	glutCreateWindow("Terrain")
+	initRendering
 
-@terrain = loadTerrain("heightmap.bmp", 20)
+	@terrain = loadTerrain("heightmap.bmp", 20)
 
-glutDisplayFunc(method(:drawScene).to_proc)
-glutKeyboardFunc(method(:handleKeypress).to_proc)
-glutReshapeFunc(method(:handleResize).to_proc)
-glutTimerFunc(25, method(:update).to_proc, 0)
+	glutDisplayFunc(method(:drawScene).to_proc)
+	glutKeyboardFunc(method(:handleKeypress).to_proc)
+	glutReshapeFunc(method(:handleResize).to_proc)
+	glutTimerFunc(25, method(:update).to_proc, 0)
 
-glutMainLoop()
+	glutMainLoop()
+end
