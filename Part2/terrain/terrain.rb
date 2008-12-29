@@ -125,6 +125,66 @@ class Terrain
 	end
 end
 
+class Vec3f
+	def initialize(x, y, z)
+		@v = []
+		@v[0] = x
+		@v[1] = y
+		@v[2] = z
+	end
+	
+	def [](index)
+		return @v[index]
+	end
+	
+	def *(scale)
+		return Vec3f.new(@v[0] * scale, @v[1] * scale, @v[2] * scale)
+	end
+	
+	def /(scale)
+		return Vec3f.new(@v[0] / scale, @v[1] / scale, @v[2] / scale)
+	end
+	
+	def +(other)
+		return Vec3f.new(@v[0] + other[0], @v[1] + other[1], @v[2] + other[2])
+	end
+	
+	def -(other)
+		return Vec3f.new(@v[0] - other[0], @v[1] - other[1], @v[2] - other[2])
+	end
+	
+	def -@
+		return Vec3f.new(-@v[0], -@v[1], -@v[2])
+	end
+	
+	def magnitude
+		return Math.sqrt((@v[0] ** 2) + (@v[1] ** 2) + (@v[2] ** 2))
+	end
+	
+	def magnitudeSquared
+		return ((@v[0] ** 2) + (@v[1] ** 2) + (@v[2] ** 2))
+	end
+	
+	def normalize
+		m = magnitude
+		return Vec3f.new(@v[0] / m, @v[1] / m, @v[2] / m)
+	end
+	
+	def dot(other)
+		return ((@v[0] * other[0]) + (@v[1] * other[1]) + (@v[2] * other[2]))
+	end
+	
+	def cross(other)
+		return Vec3f.new((@v[1] * other[2]) - (@v[2] * other[1]),
+		(@v[2] * other[0]) - (@v[0] * other[2]),
+		(@v[0] * other[1]) - (@v[1] * other[0]))
+	end
+	
+	def to_s
+		return '(' + @v[0].to_s + ',' + @v[1].to_s + ',' + @v[2].to_s + ')'
+	end
+end
+
 def loadTerrain(filename, height)
 	image = SDL::Surface.loadBMP(filename)
 	t = Terrain.new(image.w, image.h)
@@ -213,62 +273,27 @@ def drawScene
 	glutSwapBuffers
 end
 
-class Vec3f
-	def initialize(x, y, z)
-		@v = []
-		@v[0] = x
-		@v[1] = y
-		@v[2] = z
+def update(value)
+	@angle += 1.0
+	if @angle > 360
+		@angle -= 360
 	end
 	
-	def [](index)
-		return @v[index]
-	end
-	
-	def *(scale)
-		return Vec3f.new(@v[0] * scale, @v[1] * scale, @v[2] * scale)
-	end
-	
-	def /(scale)
-		return Vec3f.new(@v[0] / scale, @v[1] / scale, @v[2] / scale)
-	end
-	
-	def +(other)
-		return Vec3f.new(@v[0] + other[0], @v[1] + other[1], @v[2] + other[2])
-	end
-	
-	def -(other)
-		return Vec3f.new(@v[0] - other[0], @v[1] - other[1], @v[2] - other[2])
-	end
-	
-	def -@
-		return Vec3f.new(-@v[0], -@v[1], -@v[2])
-	end
-	
-	def magnitude
-		return Math.sqrt((@v[0] ** 2) + (@v[1] ** 2) + (@v[2] ** 2))
-	end
-	
-	def magnitudeSquared
-		return ((@v[0] ** 2) + (@v[1] ** 2) + (@v[2] ** 2))
-	end
-	
-	def normalize
-		m = magnitude
-		return Vec3f.new(@v[0] / m, @v[1] / m, @v[2] / m)
-	end
-	
-	def dot(other)
-		return ((@v[0] * other[0]) + (@v[1] * other[1]) + (@v[2] * other[2]))
-	end
-	
-	def cross(other)
-		return Vec3f.new((@v[1] * other[2]) - (@v[2] * other[1]),
-		(@v[2] * other[0]) - (@v[0] * other[2]),
-		(@v[0] * other[1]) - (@v[1] * other[0]))
-	end
-	
-	def to_s
-		return '(' + @v[0].to_s + ',' + @v[1].to_s + ',' + @v[2].to_s + ')'
-	end
+	glutPostRedisplay
+	glutTimerFunc(25, update, 0)
 end
+
+glutInit
+glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH)
+glutInitWindowSize(400, 400)
+
+glutCreateWindow("Terrain")
+initRendering
+
+@terrain = loadTerrain("heightmap.bmp", 20)
+
+glutDisplayFunc(method(:drawScene).to_proc)
+glutKeyboardFunc(method(:handleKeypress).to_proc)
+glutReshapeFunc(method(:handleResize).to_proc)
+
+glutMainLoop()
