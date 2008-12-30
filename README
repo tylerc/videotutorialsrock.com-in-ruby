@@ -30,7 +30,7 @@ these can be installed with commands:
 
 I am currently looking for help in any area. (See the TODO file for stuff that needs to be done)
 
-== Discouraging Information
+== Speed Information
 	I was recently testing the terrain lesson and found that the Ruby version of the code was noticably slower.
 	I ran some tests and found that, on my computer, I got about 18 Frames Per Second from the Ruby code and about 35 Frames Per Second from the C++ code
 	What this means is that the Ruby code runs at half the speed of the origanal C++ code. This could be caused by the code I wrote needs to be optimized. It could also mean that using OpenGL with Ruby causes a huge performance hit.
