@@ -30,6 +30,14 @@ these can be installed with commands:
 
 I am currently looking for help in any area. (See the TODO file for stuff that needs to be done)
 
+== Speed Information
+	I was recently testing the terrain lesson and found that the Ruby version of the code was noticably slower.
+	I ran some tests and found that, on my computer, I got about 18 Frames Per Second from the Ruby code and about 35 Frames Per Second from the C++ code
+	What this means is that the Ruby code runs at half the speed of the origanal C++ code. This could be caused by the code I wrote needs to be optimized. It could also mean that using OpenGL with Ruby causes a huge performance hit.
+	
+	Don't forget! There still is some hope. If the code can be optimized well enough, a difference of a few FPS won't matter. Also Ruby 1.9 is supposed to be significantly faster than Ruby 1.8 (the version of ruby this code runs on). So when Ruby 1.9 is released, hopefully there will be a noticable speed difference
+	
+
 This is an unofficial port of the code, I have no affiliation with Bill Jacobs of videotutorialsrock.com
 
 The origanal code was written in C++ by Bill Jacobs of videotutorialsrock.com
