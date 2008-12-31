@@ -217,14 +217,21 @@ def drawScene
 
     @frames += 1
     t = GLUT.Get(GLUT::ELAPSED_TIME)
-    if t - @t0 >= 5000
-      seconds = (t - @t0) / 1000.0
-      fps = @frames / seconds
-      printf("%d frames in %6.3f seconds = %6.3f FPS\n",
-        @frames, seconds, fps)
-      @t0, @frames = t, 0
-      exit if defined? @autoexit and t >= 999.0 * @autoexit
-    end
+    #if t - @t0 >= 5000
+    #  seconds = (t - @t0) / 1000.0
+    #  fps = @frames / seconds
+    #  printf("%d frames in %6.3f seconds = %6.3f FPS\n",
+    #    @frames, seconds, fps)
+    #  @t0, @frames = t, 0
+    #  exit if defined? @autoexit and t >= 999.0 * @autoexit
+    #end
+	if t - @t0 >= 100_000
+		seconds = (t - @t0) / 1000.0
+		fps = @frames /seconds
+		printf("%d frames n %6.3f seconds = %6.3f FPS\n",
+			@frames, seconds, fps)
+		exit
+	end
 end
 
 def update(value)
@@ -234,7 +241,7 @@ def update(value)
 	end
 	
 	glutPostRedisplay
-	glutTimerFunc(25, method(:update).to_proc, 0)
+	glutTimerFunc(0, method(:update).to_proc, 0)
 end
 
 if __FILE__ == $0

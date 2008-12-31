@@ -220,7 +220,7 @@ def update(value)
 	end
 	
 	glutPostRedisplay
-	glutTimerFunc(25, method(:update).to_proc, 0)
+	glutTimerFunc(0, method(:update).to_proc, 0)
 end
 
 if __FILE__ == $0
@@ -236,7 +236,7 @@ if __FILE__ == $0
 	glutDisplayFunc(method(:drawScene).to_proc)
 	glutKeyboardFunc(method(:handleKeypress).to_proc)
 	glutReshapeFunc(method(:handleResize).to_proc)
-	glutTimerFunc(25, method(:update).to_proc, 0)
+	glutTimerFunc(0, method(:update).to_proc, 0)
 
 	glutMainLoop()
 end
