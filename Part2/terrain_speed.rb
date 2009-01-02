@@ -225,7 +225,7 @@ def drawScene
     #  @t0, @frames = t, 0
     #  exit if defined? @autoexit and t >= 999.0 * @autoexit
     #end
-	if t - @t0 >= 100_000
+	if t - @t0 >= 10_000
 		seconds = (t - @t0) / 1000.0
 		fps = @frames /seconds
 		printf("%d frames n %6.3f seconds = %6.3f FPS\n",
@@ -240,7 +240,8 @@ def update(value)
 		@angle -= 360
 	end
 	
-	glutPostRedisplay
+	#glutPostRedisplay
+	drawScene
 	glutTimerFunc(0, method(:update).to_proc, 0)
 end
 
