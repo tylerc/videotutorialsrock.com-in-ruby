@@ -1,0 +1,17 @@
+You will need SWIG installed for this. www.swig.org/
+(execute these instructions in the exact order they appear)
+
+run:
+	swig -ruby -c++ text3d.i
+	ruby extconf.rb
+	
+open Makefile
+	change the line: LDSHARED = $(CC) -shared
+	to : LDSHARED = g++ -shared
+
+open text3d_wrap.cxx
+	add: #include "text3d.h"
+	to the top of the file
+	
+run:
+	make
