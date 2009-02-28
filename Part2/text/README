@@ -1,1 +1,9 @@
-This is a development directory for lesson 8, do not use this code!
+This is the Ruby code for lesson 8: Drawing Text
+
+Rename text3d-(your platform).so to text3d.so for this
+to work
+
+I currently have only included the C-Extension for
+linux. I will try to get the versions for Mac and
+Windows as soon as I can. To compile the C-Extension
+yourself, see the instructions in extension-instructions.txt
