@@ -1,6 +1,7 @@
 == TODO:
 
 Current Goals
+* Finish lesson 9: Animation
 * Get a pure Ruby implementation of the BMP loader (to get rid of the sdl dependancy)
 ** Be sure the BMP loader properly flips the images and their color values, as BMP files are stored upside down
 * Add the comments back in. In some files they were removed during translation
@@ -12,6 +13,6 @@ Future Goals
 
 Far Future Goals
 * Finish the whole tutorial series
-* Do exercises
+* Do the exercises
 * Port to Ruby 1.9
 * make video of compiling the C-Exention
