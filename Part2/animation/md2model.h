@@ -20,7 +20,7 @@
  * www.videotutorialsrock.com
  */
 
-
+#include <cstring>
 
 #ifndef MD2_MODEL_H_INCLUDED
 #define MD2_MODEL_H_INCLUDED
