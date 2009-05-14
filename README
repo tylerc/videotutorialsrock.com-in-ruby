@@ -26,8 +26,8 @@ from C++ to ruby
 This code requires rubysdl and rubyopengl
 these can be installed with commands:
 
-* gem install rubysdl -y
-* gem install ruby-opengl -y
+* gem install rubysdl
+* gem install ruby-opengl
 
 (note these gems may require outside dependanies, you can find out which ones from their respective websites)
 
